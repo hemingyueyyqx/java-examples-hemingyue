@@ -15,10 +15,11 @@ public class Test {
 
       try( FileInputStream in =  new FileInputStream(inputpath);
            FileOutputStream out = new FileOutputStream(outputPath)) {
-          int c;
-          while((c = in.read()) !=-1) {
-              System.out.println("读取字节的十进制整数：" + c);
-              out.write(c);
+          int len;
+          byte[] buffer = new byte[512];
+          while((len = in.read(buffer)) !=-1) {
+              //System.out.println("读取字节的十进制整数：" + c);
+              out.write(buffer, 0, len);
           }
       }
       catch(IOException e) {
