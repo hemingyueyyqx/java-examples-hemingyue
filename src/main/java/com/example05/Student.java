@@ -1,4 +1,4 @@
-package com.excample05;
+package com.example05;
 
 public class Student {
     private int number;

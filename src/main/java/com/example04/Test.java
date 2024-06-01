@@ -19,7 +19,8 @@ public class Test {
         users.add(user3);
         users.add(user4);
         users.add(user5);
-        setUsersMapByCityTest(users);
+        //setUsersMapByCityTest(users);
+        toMap(users);
 
 
     }
@@ -48,5 +49,20 @@ public class Test {
         }
 
 
+    }
+    private static void toMap(Set<User> users) {
+        Map<String, Set<User>> map = new HashMap<>();
+        for(User u : users) {
+            Set<User> set = map.getOrDefault(u.getCity(), new HashSet<>());
+            set.add(u);
+            map.put(u.getCity(),set);
+        }
+        for(Map.Entry<String, Set<User>> entry : map.entrySet()) {
+            System.out.println("key = " + entry.getKey());
+            System.out.println("Value = " );
+            for(User i : entry.getValue()) {
+                System.out.println("id : " + i.getId() + " name : " + i.getName() + " city : " + i.getCity());
+            }
+        }
     }
 }
